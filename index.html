@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA VELEN — Official Artist Website</title>
+  <meta name="description" content="Official website of music artist Aria Velen. Music that lives somewhere between memory, midnight and motion.">
+
+  <!-- Google Fonts: Luxury Editorial Serif & Modern Geometric Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23070707' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='%23d4af37' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=28">
+</head>
+<body data-page="home">
+
+  <!-- Custom Cursor System (Matches User Screenshot 2: "O P ◐ N" Circle Badge) -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+      <div class="cursor-badge">
+        <span class="cursor-letter">O</span>
+        <span class="cursor-letter">P</span>
+        <span class="cursor-symbol">
+          <svg viewBox="0 0 24 24" class="split-disc-icon">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2 A10 10 0 0 1 12 22 Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="cursor-letter">N</span>
+      </div>
+      <div class="cursor-subtext" id="cursor-action-label"></div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       OPENING THEME ANIMATION OVERLAY (Matches User Picture 1:
+       One golden line first comes expanding horizontally, then
+       the name of artist 'ARIA VELEN' in white)
+       ============================================================== -->
+  <!-- Theatrical Cinematic Opening (Hidden for instant page display) -->
+  <div class="theatrical-opening-curtain" id="theatrical-curtain" style="display: none !important;" aria-label="Aria Velen Opening Theme">
+    <div class="theatrical-curtain-panel">
+      <div class="theatrical-content">
+        <div class="theatrical-golden-line"></div>
+        <h1 class="theatrical-artist-name">ARIA VELEN</h1>
+        <div class="theatrical-sub-status">
+          <span class="theatrical-tracker">01 // THE ARCHITECTURAL SANCTUARY</span>
+        </div>
+      </div>
+      <div class="theatrical-curtain-edge"></div>
+      <button class="theatrical-skip-btn" id="theatrical-skip-btn">ENTER SANCTUARY</button>
+    </div>
+  </div>
+
+  <!-- Hero Singer Background: Positioned physically BEHIND the 3D canvas so the 3D 'A' is 100% NON-TRANSPARENT & OPAQUE -->
+  <div class="hero-singer-backdrop" id="hero-singer-backdrop" aria-hidden="true">
+    <img src="assets/hero-singer.jpg" alt="Aria Velen singing into vintage microphone" class="hero-singer-img" fetchpriority="high" decoding="async">
+    <div class="hero-singer-overlay"></div>
+  </div>
+
+  <!-- Background WebGL 3D Canvas (Renders the Huge 3D Capital 'A' in the middle!) -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Site Header (Matches Screenshots 1, 2, 3, 4, 5) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" data-cursor="HOME">
+        <span class="brand-dash">—</span>
+        <span class="brand-name">ARIA VELEN</span>
+      </a>
+
+      <!-- Separate Webpage Navigation Links -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active" data-cursor="HOME">
+              <span class="nav-text">HOME</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link" data-cursor="ABOUT">
+              <span class="nav-text">ABOUT</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="music.html" class="nav-link" data-cursor="MUSIC">
+              <span class="nav-text">MUSIC</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tour.html" class="nav-link" data-cursor="TOUR">
+              <span class="nav-text">TOUR</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" data-cursor="CONTACT">
+              <span class="nav-text">CONTACT</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Ambient Audio Controller -->
+  <div class="floating-sound-controller">
+    <button class="sound-toggle-btn" id="sound-toggle-btn" title="Toggle Ethereal Audio Experience" data-cursor="SOUND">
+      <span class="sound-wave-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </span>
+      <span class="sound-label" id="sound-status-text">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <main class="page-content">
+
+    <!-- ==============================================================
+         HERO SECTION: HUGE 3D CAPITAL "A" IN MIDDLE
+         (Exact recreation of User Screenshot 2)
+         ============================================================== -->
+    <section class="section home-hero-a-section" id="hero-a">
+      <!-- Dramatic Top-Left Light Effect (Volumetric Radial Glow & Anamorphic Beam) -->
+      <div class="hero-top-left-light-glow" aria-hidden="true"></div>
+      <div class="hero-top-left-light-beam" aria-hidden="true"></div>
+
+      <!-- Overlaid Typography on top of the 3D 'A' in the center (Matches Screenshot 1:1) -->
+      <div class="hero-a-content" data-cursor="DRAG 3D">
+        <h1 class="hero-a-title">
+          <span class="hero-word-aria">ARIA</span>
+          <span class="hero-word-velen">VELEN</span>
+        </h1>
+        <div class="hero-a-divider" aria-hidden="true"></div>
+        <div class="hero-a-scroll-indicator">
+          <span class="scroll-label">SCROLL</span>
+          <div class="scroll-stem"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 01: THE STATEMENT
+         (Exact recreation of User Screenshot 1)
+         ============================================================== -->
+    <section class="section statement-section" id="statement">
+      <div class="statement-container">
+        
+        <!-- Section Tracker Tag -->
+        <div class="section-tracker-header">
+          <span class="brand-dash">—</span>
+          <span class="brand-subname">ARIA VELEN</span>
+          <span class="tracker-num">01</span>
+          <span class="tracker-dash">—</span>
+          <span class="tracker-title">THE STATEMENT</span>
+        </div>
+
+        <div class="statement-grid">
+          <!-- Left Column: Typography Statement -->
+          <div class="statement-text-col">
+            <h2 class="statement-headline">
+              Music that lives somewhere <br>
+              between memory, <br>
+              midnight and motion.
+            </h2>
+
+            <p class="statement-paragraph">
+              Aria Velen crafts sound as cinema — each track a frame, each silence a scene. Her voice moves through shadow and shimmer, building a world where emotion is architecture.
+            </p>
+
+            <div class="statement-accent-line"></div>
+          </div>
+
+          <!-- Right Column: High Fashion Profile Portrait -->
+          <div class="statement-photo-col" data-cursor="OPEN">
+            <div class="statement-photo-wrap">
+              <img src="assets/statement-portrait.jpg" alt="Aria Velen in profile with golden earring" class="statement-img" loading="lazy" decoding="async">
+              <div class="photo-ambient-vignette"></div>
+              
+              <!-- Subtle Gold Dot Indicator (From Screenshot 1) -->
+              <div class="photo-indicator-circle">
+                <span class="photo-indicator-dot"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 02: LATEST RELEASE (Nocturne)
+         (Exact recreation of User Screenshot 3)
+         ============================================================== -->
+    <section class="section release-section" id="release">
+      <div class="release-container">
+        
+        <!-- Section Tracker Tag -->
+        <div class="section-tracker-header">
+          <span class="brand-dash">—</span>
+          <span class="brand-subname">ARIA VELEN</span>
+          <span class="tracker-num">02</span>
+          <span class="tracker-dash">—</span>
+          <span class="tracker-title">LATEST RELEASE</span>
+        </div>
+
+        <div class="release-grid">
+          <!-- Left Column: Album Artwork -->
+          <div class="release-artwork-col" data-cursor="ALBUM">
+            <div class="release-artwork-wrap">
+              <img src="assets/nocturne-album.jpg" alt="Aria Velen — The Frequency & Nocturne Master Vinyl Cover" class="release-album-img" loading="lazy" decoding="async">
+              <div class="release-artwork-overlay"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Album Story & Metadata Grid -->
+          <div class="release-info-col">
+            <h2 class="release-title">Nocturne</h2>
+
+            <p class="release-description">
+              Recorded between dusk and dawn, Nocturne is a study in restraint — a single piano, a single voice, and the slow geometry of longing. The first chapter of a new era.
+            </p>
+
+            <!-- Metadata Table matching Screenshot 3 -->
+            <div class="release-meta-table">
+              <div class="meta-field">
+                <span class="meta-field-label">TITLE</span>
+                <span class="meta-field-val">Nocturne</span>
+              </div>
+              <div class="meta-field">
+                <span class="meta-field-label">YEAR</span>
+                <span class="meta-field-val">2025</span>
+              </div>
+              <div class="meta-field">
+                <span class="meta-field-label">RELEASE</span>
+                <span class="meta-field-val">07.11.2025</span>
+              </div>
+              <div class="meta-field center-play-field">
+                <button class="meta-play-circle-btn" id="nocturne-quick-play" data-cursor="PLAY" title="Play Nocturne Track">
+                  <span class="circle-play-dot"></span>
+                </button>
+              </div>
+              <div class="meta-field">
+                <span class="meta-field-label">GENRE</span>
+                <span class="meta-field-val">Cinematic Pop</span>
+              </div>
+            </div>
+
+            <!-- Listen Now CTA Button matching Screenshot 3 -->
+            <div class="release-actions">
+              <button class="btn btn-secondary release-listen-btn" id="release-listen-now-btn" data-cursor="PLAY">
+                <span class="btn-dash">—</span>
+                <span class="btn-text">LISTEN NOW</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 03: VISUAL GALLERY
+         (Exact recreation of User Screenshot 4)
+         ============================================================== -->
+    <section class="section visual-gallery-section" id="gallery">
+      <div class="gallery-container">
+        
+        <!-- Section Tracker Tag -->
+        <div class="section-tracker-header">
+          <span class="brand-dash">—</span>
+          <span class="brand-subname">ARIA VELEN</span>
+          <span class="tracker-num">03</span>
+          <span class="tracker-dash">—</span>
+          <span class="tracker-title">VISUAL GALLERY</span>
+        </div>
+
+        <!-- 3-Column Photography Showcase matching Screenshot 4 -->
+        <div class="gallery-cards-grid">
+          
+          <!-- Column 1: Architecture of Silence -->
+          <div class="gallery-item-card" data-cursor="VIEW">
+            <div class="gallery-item-wrap">
+              <img src="assets/gallery-architecture.jpg" alt="Brutalist concrete architecture of silence at night" class="gallery-img" loading="lazy" decoding="async">
+              <div class="gallery-item-vignette"></div>
+            </div>
+            <div class="gallery-item-caption">
+              <span class="caption-dash">—</span>
+              <span class="caption-text">ARCHITECTURE OF SILENCE</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Live Concert Silhouette in Golden Lights -->
+          <div class="gallery-item-card featured-concert-item" data-cursor="VIEW">
+            <div class="gallery-item-wrap">
+              <img src="assets/gallery-concert.jpg" alt="Aria Velen live concert singer silhouette in blazing golden lights" class="gallery-img" loading="lazy" decoding="async">
+              <div class="gallery-item-vignette"></div>
+              
+              <!-- Indicator circle from screenshot 4 -->
+              <div class="concert-circle-indicator">
+                <span class="indicator-inner-dot"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Gold & Silk Macro Texture -->
+          <div class="gallery-item-card" data-cursor="VIEW">
+            <div class="gallery-item-wrap">
+              <img src="assets/gallery-silk.jpg" alt="Textured black silk with glittering golden stardust particles" class="gallery-img" loading="lazy" decoding="async">
+              <div class="gallery-item-vignette"></div>
+            </div>
+            <div class="gallery-item-caption right-caption">
+              <span class="caption-text">COLD & SILK</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 04: ENTER THE WORLD
+         (Exact recreation of User Screenshot 5)
+         ============================================================== -->
+    <section class="section enter-world-section" id="enter-world">
+      <div class="enter-world-container">
+        
+        <h2 class="enter-world-title">
+          <span class="enter-regular">Enter</span>
+          <span class="enter-italic-gold">the World</span>
+        </h2>
+
+        <div class="enter-world-action">
+          <a href="music.html" class="btn btn-secondary begin-journey-btn" data-cursor="OPEN">
+            <span class="btn-dash">—</span>
+            <span class="btn-text">BEGIN THE JOURNEY</span>
+          </a>
+        </div>
+
+        <div class="enter-world-pin">
+          <span class="world-pin-dot"></span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         EDITORIAL FOOTER (Matches Tour Footer)
+         Left: ARIA VELEN / Music between midnight, memory and motion.
+         NAVIGATE & LISTEN Columns + Copyright & Credits Sub-Footer
+         ============================================================== -->
+    <footer class="site-footer tour-editorial-footer">
+      <div class="editorial-footer-container">
+        <div class="footer-col-brand">
+          <h3 class="footer-brand-title">ARIA VELEN</h3>
+          <p class="footer-brand-tagline">Music between midnight, memory and motion.</p>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-group-heading">NAVIGATE</h4>
+          <ul class="footer-group-list">
+            <li><a href="index.html" class="footer-group-link" data-cursor="HOME">Home</a></li>
+            <li><a href="about.html" class="footer-group-link" data-cursor="ABOUT">About</a></li>
+            <li><a href="music.html" class="footer-group-link" data-cursor="MUSIC">Music</a></li>
+            <li><a href="tour.html" class="footer-group-link" data-cursor="TOUR">Tour</a></li>
+            <li><a href="contact.html" class="footer-group-link" data-cursor="CONTACT">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-group-heading">LISTEN</h4>
+          <ul class="footer-group-list">
+            <li><a href="https://spotify.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Spotify</a></li>
+            <li><a href="https://music.apple.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Apple Music</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">YouTube</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-sub-bar">
+        <div class="footer-sub-container">
+          <span class="footer-sub-copy">© 2026 ARIA VELEN</span>
+          <span class="footer-sub-credit">A FICTIONAL ARTIST — CRAFTED WITH GSAP</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="three.min.js"></script>
+  <script src="audio-engine.js?v=28"></script>
+  <script src="three-scene.js?v=28"></script>
+  <script src="cursor.js?v=28"></script>
+  <script src="main.js?v=28"></script>
+</body>
+</html>

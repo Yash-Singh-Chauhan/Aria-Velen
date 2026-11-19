@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABOUT — ARIA VELEN // Official Biography & Timeline</title>
+  <meta name="description" content="Discover the biography, artistic philosophy, and career timeline of avant-garde music artist Aria Velen.">
+
+  <!-- Google Fonts: Luxury Editorial Serif & Modern Geometric Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23070707' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='%23d4af37' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=28">
+</head>
+<body data-page="about">
+
+  <!-- Custom Interactive Cursor System -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring">
+      <div class="cursor-badge">
+        <span class="cursor-letter">O</span>
+        <span class="cursor-letter">P</span>
+        <span class="cursor-symbol">
+          <svg viewBox="0 0 24 24" class="split-disc-icon">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 2 A10 10 0 0 1 12 22 Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="cursor-letter">N</span>
+      </div>
+      <div class="cursor-subtext" id="cursor-action-label"></div>
+    </div>
+  </div>
+
+  <!-- Theatrical Cinematic Opening (Hidden for instant page display) -->
+  <div class="theatrical-opening-curtain" id="theatrical-curtain" style="display: none !important;" aria-label="Aria Velen Opening Theme">
+    <div class="theatrical-curtain-panel">
+      <div class="theatrical-content">
+        <div class="theatrical-golden-line"></div>
+        <h1 class="theatrical-artist-name">ARIA VELEN</h1>
+        <div class="theatrical-sub-status">
+          <span class="theatrical-tracker">03 // THE GENESIS & NARRATIVE</span>
+        </div>
+      </div>
+      <div class="theatrical-curtain-edge"></div>
+      <button class="theatrical-skip-btn" id="theatrical-skip-btn">ENTER SANCTUARY</button>
+    </div>
+  </div>
+
+  <!-- Dedicated 3D Canvas (Renders Giant Darker Metallic Torus Knot on Right) -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Header (Matches Screenshots: [ ABOUT ] active with gold box frame) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo" data-cursor="HOME">
+        <span class="brand-dash">—</span>
+        <span class="brand-name">ARIA VELEN</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" data-cursor="HOME">
+              <span class="nav-text">HOME</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link active" data-cursor="ABOUT">
+              <span class="nav-text">ABOUT</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="music.html" class="nav-link" data-cursor="MUSIC">
+              <span class="nav-text">MUSIC</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="tour.html" class="nav-link" data-cursor="TOUR">
+              <span class="nav-text">TOUR</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link" data-cursor="CONTACT">
+              <span class="nav-text">CONTACT</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Ambient Audio Controller -->
+  <div class="floating-sound-controller">
+    <button class="sound-toggle-btn" id="sound-toggle-btn" title="Toggle Ethereal Audio Experience" data-cursor="SOUND">
+      <span class="sound-wave-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+        <span class="bar bar-4"></span>
+      </span>
+      <span class="sound-label" id="sound-status-text">SOUND: OFF</span>
+    </button>
+  </div>
+
+  <main class="page-content">
+
+    <!-- ==============================================================
+         HERO SECTION: ABOUT ARIA (Matches User Screenshot 4 Exactly!)
+         Left: Huge "About" (white serif) and "Aria" (gold italic serif)
+         Right: Giant 3D Darker Metallic Sculpture (Three.js WebGL)
+         ============================================================== -->
+    <section class="section about-hero-fullscreen-section" id="about-hero">
+      <!-- Atmospheric Light & Deep Amber Ambient Auras -->
+      <div class="hero-top-left-light-glow" aria-hidden="true"></div>
+      <div class="hero-top-left-light-beam" aria-hidden="true"></div>
+      <div class="quote-ambient-aura" aria-hidden="true"></div>
+
+      <div class="about-hero-layout">
+        <!-- LEFT: Shifted Written Quote, Headline & Artistic Composition -->
+        <div class="about-hero-left-content" data-cursor="ABOUT">
+
+          <h1 class="about-hero-title">
+            <span class="about-word-about">About</span>
+            <span class="about-word-aria">Aria</span>
+          </h1>
+
+          <!-- Artistic Written Quote Card with Shimmer & Floating Watermark -->
+          <div class="about-quote-artistic-card" id="about-quote-card">
+            <div class="quote-glow-backdrop" aria-hidden="true"></div>
+            <div class="quote-symbol-watermark" aria-hidden="true">“</div>
+            
+            <div class="quote-beam-line" aria-hidden="true">
+              <span class="quote-beam-spark"></span>
+            </div>
+
+            <blockquote class="about-written-quote">
+              <p class="quote-main-statement">
+                “I do not perform songs — <span class="quote-highlight-gold">I stage memories.</span>”
+              </p>
+              <p class="quote-secondary-text">
+                Born from the quiet space between a film score and a lullaby, treating every breath as architectural silence.
+              </p>
+            </blockquote>
+
+            <div class="quote-author-signature">
+              <span class="sig-name">— ARIA VELEN</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: Dedicated Clean Framing Space for 3D Gold Sculpture -->
+        <div class="about-hero-right-space" aria-hidden="true"></div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 01: BIOGRAPHY (Matches User Screenshot 3 Exactly!)
+         Eyebrow: 01 —— BIOGRAPHY
+         Left: Editorial Fine Art Portrait of Aria Velen
+         Right: Monumental Drop Cap "A" + Exact Bio Paragraphs + Metadata Specs
+         ============================================================== -->
+    <section class="section about-biography-section scroll-fade-up" id="biography">
+      <div class="section-center-eyebrow">
+        <span class="eyebrow-num">01</span>
+        <span class="eyebrow-dash">—</span>
+        <span class="eyebrow-text">BIOGRAPHY</span>
+      </div>
+
+      <div class="biography-grid">
+        <!-- Left: Editorial Portrait -->
+        <div class="biography-portrait-col">
+          <div class="biography-portrait-frame">
+            <img src="assets/statement-portrait.jpg" alt="Aria Velen editorial portrait" class="biography-portrait-img" loading="lazy" decoding="async">
+            <div class="portrait-glow-edge" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Right: Text with Drop Cap + Metadata -->
+        <div class="biography-text-col">
+          <div class="biography-lead-block">
+            <span class="biography-dropcap">A</span>
+            <p class="biography-lead-paragraph">
+              ria Velen does not perform songs — she stages memories. Born from the space between a film score and a lullaby, her work treats every track as a single, held breath.
+            </p>
+          </div>
+
+          <div class="biography-body-paragraphs">
+            <p>
+              She began recording in borrowed studios at seventeen, layering her voice over field recordings of empty rooms.
+            </p>
+            <p>
+              Her debut EP arrived in 2021 — sparse, cinematic, and unrelentingly intimate — and quietly gathered a global audience that found her by feeling, not by algorithm.
+            </p>
+            <p>
+              Today she builds worlds: sound, image, and silence arranged with the discipline of an architect and the patience of a filmmaker.
+            </p>
+          </div>
+
+          <!-- Metadata Spec Row (ORIGIN, GENRE, ACTIVE SINCE) -->
+          <div class="biography-metadata-row">
+            <div class="bio-meta-item">
+              <span class="bio-meta-label">ORIGIN</span>
+              <span class="bio-meta-value">Lisbon, PT</span>
+            </div>
+            <div class="bio-meta-item">
+              <span class="bio-meta-label">GENRE</span>
+              <span class="bio-meta-value">Cinematic Pop</span>
+            </div>
+            <div class="bio-meta-item">
+              <span class="bio-meta-label">ACTIVE SINCE</span>
+              <span class="bio-meta-value">2019</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 02: CAREER TIMELINE (Matches User Screenshot 2 Exactly!)
+         Eyebrow: 02 —— CAREER TIMELINE
+         Vertical Golden Line with Glowing Dots & Alternating Cards (2019, 2021, 2023)
+         ============================================================== -->
+    <section class="section about-timeline-section scroll-fade-up" id="timeline">
+      <div class="section-center-eyebrow">
+        <span class="eyebrow-num">02</span>
+        <span class="eyebrow-dash">—</span>
+        <span class="eyebrow-text">CAREER TIMELINE</span>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Central Golden Vertical Spine -->
+        <div class="timeline-vertical-spine" aria-hidden="true"></div>
+
+        <div class="timeline-events-list">
+          
+          <!-- Event 01: 2019 (Left) -->
+          <div class="timeline-item timeline-item-left scroll-fade-up">
+            <div class="timeline-content">
+              <span class="timeline-year">2019</span>
+              <span class="timeline-tag">FIRST RELEASE</span>
+              <p class="timeline-desc">A self-released single recorded in a single night.</p>
+            </div>
+            <div class="timeline-node" aria-hidden="true">
+              <div class="timeline-node-dot"></div>
+              <div class="timeline-node-pulse"></div>
+            </div>
+            <div class="timeline-photo-side">
+              <div class="timeline-photo-card" data-cursor="VIEW">
+                <img src="assets/past-delhi.jpg" alt="Aria Velen first recording session in 2019" class="timeline-thumb-img" loading="lazy" decoding="async">
+                <div class="timeline-photo-caption">ARCHIVE // SESSION 01</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 02: 2021 (Right) -->
+          <div class="timeline-item timeline-item-right scroll-fade-up">
+            <div class="timeline-photo-side">
+              <div class="timeline-photo-card" data-cursor="VIEW">
+                <img src="assets/album-frequency.jpg" alt="Aria Velen Velvet Sky Debut EP in 2021" class="timeline-thumb-img" loading="lazy" decoding="async">
+                <div class="timeline-photo-caption">VELVET SKY // DEBUT EP</div>
+              </div>
+            </div>
+            <div class="timeline-node" aria-hidden="true">
+              <div class="timeline-node-dot"></div>
+              <div class="timeline-node-pulse"></div>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-year">2021</span>
+              <span class="timeline-tag">DEBUT EP</span>
+              <p class="timeline-desc">“Velvet Sky” — six tracks, no features, one vision.</p>
+            </div>
+          </div>
+
+          <!-- Event 03: 2023 (Left) -->
+          <div class="timeline-item timeline-item-left scroll-fade-up">
+            <div class="timeline-content">
+              <span class="timeline-year">2023</span>
+              <span class="timeline-tag">INTERNATIONAL TOUR</span>
+              <p class="timeline-desc">42 sold-out performances across European opera halls and acoustic sanctuaries.</p>
+            </div>
+            <div class="timeline-node" aria-hidden="true">
+              <div class="timeline-node-dot"></div>
+              <div class="timeline-node-pulse"></div>
+            </div>
+            <div class="timeline-photo-side">
+              <div class="timeline-photo-card" data-cursor="VIEW">
+                <img src="assets/london.jpg" alt="Aria Velen European Tour performance at Royal Albert Hall in 2023" class="timeline-thumb-img" loading="lazy" decoding="async">
+                <div class="timeline-photo-caption">EUROPE // 42 SOLD-OUT DATES</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECTION 03: DISCOVER THE MUSIC (Matches User Screenshot 1 Exactly!)
+         Eyebrow: — SECTION 03 —
+         Heading: "Discover" (white serif) "the Music" (gold italic serif)
+         Button: "— ENTER THE SOUND —"
+         ============================================================== -->
+    <section class="section about-discover-section scroll-fade-up" id="discover">
+      <div class="discover-center-content">
+        <div class="section-center-eyebrow">
+          <span class="eyebrow-dash">—</span>
+          <span class="eyebrow-text">SECTION 03</span>
+          <span class="eyebrow-dash">—</span>
+        </div>
+
+        <h2 class="discover-heading">
+          <span class="discover-word-discover">Discover</span>
+          <span class="discover-word-the-music">the Music</span>
+        </h2>
+
+        <a href="music.html" class="discover-enter-btn" data-cursor="ENTER">
+          <span class="enter-dash">—</span>
+          <span class="enter-label">ENTER THE SOUND</span>
+          <span class="enter-dash">—</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         EDITORIAL FOOTER (Matches Tour Footer)
+         Left: ARIA VELEN / Music between midnight, memory and motion.
+         NAVIGATE & LISTEN Columns + Copyright & Credits Sub-Footer
+         ============================================================== -->
+    <footer class="site-footer tour-editorial-footer">
+      <div class="editorial-footer-container">
+        <div class="footer-col-brand">
+          <h3 class="footer-brand-title">ARIA VELEN</h3>
+          <p class="footer-brand-tagline">Music between midnight, memory and motion.</p>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-group-heading">NAVIGATE</h4>
+          <ul class="footer-group-list">
+            <li><a href="index.html" class="footer-group-link" data-cursor="HOME">Home</a></li>
+            <li><a href="about.html" class="footer-group-link" data-cursor="ABOUT">About</a></li>
+            <li><a href="music.html" class="footer-group-link" data-cursor="MUSIC">Music</a></li>
+            <li><a href="tour.html" class="footer-group-link" data-cursor="TOUR">Tour</a></li>
+            <li><a href="contact.html" class="footer-group-link" data-cursor="CONTACT">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-group">
+          <h4 class="footer-group-heading">LISTEN</h4>
+          <ul class="footer-group-list">
+            <li><a href="https://spotify.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Spotify</a></li>
+            <li><a href="https://music.apple.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Apple Music</a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">YouTube</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-group-link" data-cursor="EXTERNAL">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-sub-bar">
+        <div class="footer-sub-container">
+          <span class="footer-sub-copy">© 2026 ARIA VELEN</span>
+          <span class="footer-sub-credit">A FICTIONAL ARTIST — CRAFTED WITH GSAP</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="three.min.js"></script>
+  <script src="audio-engine.js?v=28"></script>
+  <script src="three-scene.js?v=28"></script>
+  <script src="cursor.js?v=28"></script>
+  <script src="main.js?v=28"></script>
+</body>
+</html>
