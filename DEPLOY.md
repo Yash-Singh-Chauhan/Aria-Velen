@@ -1,20 +1,20 @@
 # Deploy: esmélumière.com on Vercel
 
 This project is a **static site** — plain HTML/CSS/JS, no build step, no `package.json`.
-Entry point: `aria-velen-music/index.html` (~3.4 MB total, all references relative, all verified 200 on a local server).
+Entry point: `index.html` at the repo root (~3.4 MB total, all references relative, all verified 200 on a local server).
 
 ## 1. Push to GitHub
 
-Create a repo and push this folder. The site files live in `aria-velen-music/`, so the repo will look like:
+Already done: https://github.com/Yash-Singh-Chauhan/Aria-Velen (branch `main`).
+The site files sit at the **repo root**, so it looks like:
 
 ```
-repo/
-  aria-velen-music/
-    index.html, about.html, music.html, tour.html, contact.html, animation.html
-    style.css, main.js, cursor.js, audio-engine.js, three-scene.js, three.min.js
-    assets/            (16 images)
-    vercel.json        (security headers + asset caching)
-    .vercelignore      (keeps scratch/ out of the deployment)
+Aria-Velen/
+  index.html, about.html, music.html, tour.html, contact.html, animation.html
+  style.css, main.js, cursor.js, audio-engine.js, three-scene.js, three.min.js
+  assets/            (16 images)
+  vercel.json        (security headers + asset caching)
+  .vercelignore      (keeps scratch/ out of the deployment)
 ```
 
 ## 2. Import in Vercel
@@ -24,12 +24,12 @@ Add New → Project → pick the repo. Then, **before clicking Deploy**, set:
 | Setting | Value |
 | --- | --- |
 | Framework Preset | `Other` |
-| Root Directory | `aria-velen-music` |
+| Root Directory | `./` (default — leave as-is) |
 | Build Command | *(leave empty / override off)* |
 | Output Directory | *(leave empty / override off)* |
 | Install Command | *(leave empty)* |
 
-**Root Directory is the one that matters.** Without it Vercel looks for `index.html` at the repo root, finds only a folder, and the domain shows a 404.
+**Leave Root Directory at the default.** `index.html` is at the repo root, so Vercel finds it with no extra configuration; setting a subfolder here would 404.
 
 ## 3. Add the domain in Vercel
 
