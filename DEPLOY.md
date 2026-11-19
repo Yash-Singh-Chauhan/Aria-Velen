@@ -42,15 +42,32 @@ DNS uses the ASCII/punycode form of the accented name: `xn--esmlumire-63ag.com`.
 
 ## 4. DNS at Hostinger (DNS / Nameservers → Manage DNS records)
 
-1. Delete any existing apex `A` record (Hostinger parking IP) and any existing `www` `CNAME`/parking record.
-2. Add:
+Hostinger keeps the nameservers (`ns1/ns2.dns-parking.com`) — **only the web records change**, so
+Hostinger email (MX `mx1/mx2.hostinger.com`, TXT `v=spf1 include:_spf.mail.hostinger.com ~all`)
+stays working.
+
+State of the zone when this was written (checked via Google DNS):
+
+| Type | Name | Currently | Action |
+| --- | --- | --- | --- |
+| `A` | `@` | `93.127.173.144`, `88.222.243.127` (Hostinger) | **Delete both** |
+| `AAAA` | `@` | `2a02:4780:20:b53a:…`, `2a02:4780:3c:3073:…` (Hostinger) | **Delete both** — Vercel does not serve custom domains over IPv6 |
+| `CNAME` | `www` | `www.…cdn.hstgr.net` (Hostinger CDN) | **Delete**, replace |
+| `MX` / `TXT` | `@` | Hostinger mail | **Keep** |
+
+1. If hPanel shows the Hostinger **CDN** switched on for the site, turn it off — otherwise the `www`
+   record keeps pointing back at `cdn.hstgr.net`.
+2. Delete the rows marked above, then add:
 
 | Type | Name | Value / Target | TTL |
 | --- | --- | --- | --- |
 | `A` | `@` | `76.76.21.21` | 3600 (or default) |
 | `CNAME` | `www` | `cname.vercel-dns.com` | 3600 (or default) |
 
-Use whatever IP/target Vercel actually displays on the domain screen if it differs.
+Copy the exact IP/target from your Vercel domain card if it shows something else — newer projects get
+addresses from an anycast pool (e.g. `216.198.79.1`) and a per-project CNAME target like
+`<hash>.vercel-dns-017.com`. A value copied from an older guide leaves the domain stuck on
+"Invalid Configuration".
 
 3. In Vercel, pick one as the primary domain (apex is fine) and let the other redirect.
 
